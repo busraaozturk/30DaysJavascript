@@ -66,30 +66,66 @@
     <audio data-key="75" src="sounds/tom.wav"></audio>
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
-    <script>
-        function playSound(e) {
-            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-            const key = document.querySelector(`div[date-key="${e.keyCode}"]`);
-            if (!audio) {
-                return;
-                //stop the function from running all together
-            }
-            audio.currentTime = 0;
-            audio.play();
-            key.classList.add('playing');
+<script>
+    // Benim yaptığım js
+    const keys = document.querySelectorAll('.key');
+
+    document.addEventListener('keydown', function(event){
+        // Basılan tuşu bulur
+        const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
+        if (!key) {
+            return;
         }
 
-        function removeTransition(e) {
-            if (e.propertyName !== 'transform') {
-                return;
-            }
-            this.classList.remove('playing');
+        // İlgili sesi bulur
+        const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+        if (!audio) {
+            return;
         }
 
-        const keys = Array.from(document.querySelectorAll('.key'));
-        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-        window.addEventListener('keydown', playSound);
-</script>
+        // Ses başa sarılır
+        audio.currentTime = 0;
+        audio.play();
+
+        // Animasyonu ekle
+        key.classList.add('playing');
+    });
+
+    keys.forEach(key => {
+        key.addEventListener('transitionend', function () {
+            key.classList.remove('playing');
+        });
+    });
+
+
+// Örnek de bulunan Js
+// document.addEventListener('keydown', function(event) {
+//     console.log("Tuş Değeri : " + event.key);
+// });
+
+// function playSound(e) {
+//     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+//     const key = document.querySelector(`div[date-key="${e.keyCode}"]`);
+//     if (!audio) {
+//         return;
+//         //stop the function from running all together
+//     }
+//     audio.currentTime = 0;
+//     audio.play();
+//     key.classList.add('playing');
+// }
+
+// function removeTransition(e) {
+//     if (e.propertyName !== 'transform') {
+//         return;
+//     }
+//     this.classList.remove('playing');
+// }
+
+// const keys = Array.from(document.querySelectorAll('.key'));
+// keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+// window.addEventListener('keydown', playSound);
+    </script>
 </body>
 </html>
 
