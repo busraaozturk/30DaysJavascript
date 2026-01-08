@@ -24,9 +24,19 @@ body{
 }
 
 .controls{
-    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 input{
     width: 100px;
+}
+
+.controls span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
