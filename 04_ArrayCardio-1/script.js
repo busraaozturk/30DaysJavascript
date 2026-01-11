@@ -21,39 +21,39 @@ const inventors = [
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
 
-    const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600))
-    console.table(fifteen);
+    // 1- inventors listesini 1500'lü yıllarda doğanlarla filtreleyin 
+    const list = inventors.filter(inv => (inv.year >= 1500 && inv.year < 1600)); 
+    console.table(list);
 
-    const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
-    console.log(fullNames);
+    // 2 - inventors listesinde isim-soyisim listesi oluşturmak 
+    const fullname = inventors.map(inventor => 
+        `${inventor.first} ${inventor.last}`); 
+    console.log("FullName : " + fullname);
 
-    // const ordered = inventors.sort(function(a,b) {
-    //     if (a.year > b.year) {
-    //         return 1;
-    //     }
-    //     else {
-    //         return -1;
-    //     }
-    // });
-    const ordered = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
+    // 3 - Doğum tarihlerine göre en yaşlıdan en gence doğru sıralama 
+    const ordered = inventors.sort(function(a,b) { 
+        if(a.year > b.year) { 
+            return 1; 
+        } else { 
+            return -1; 
+        } 
+    }); 
     console.table(ordered);
 
-    const totalYears =inventors.reduce((total,inventor) => {
-        return total + (inventor.passed - inventor.year);
-    },0);
-    console.log(totalYears);
+    // 4 - tüm hepsi toplam kaç yıl yaşadılar 
+    const totalage = inventors.reduce((total, inventor) => { 
+        return total + (inventor.passed - inventor.year); 
+    }); 
+    console.log(totalage);
 
+    // 5 - En uzun yaşayanlar 
     const oldset = inventors.sort(function(a,b) {
-        const lastGuy = a.passed - a.year;
-        const nextGuy = b.passed - b.year;
-        return lastGuy > nextGuy ? -1 : 1;
-    });
-    console.log(oldset);
+         const lastinventor = a.passed - a.year; 
+         const nextInventor = b.passed - b.year; 
+         return lastinventor > nextInventor ? -1 : 1; }); 
+    console.table(oldset);
 
-    // const category = document.querySelectorAll('.mw-category');
-    // const links = Array.from(category.querySelectorAll('a'));
-    // const de = links.map(link => link.textContent).filter(streetName => streetName.includes('de'));
-
+    // 6 - Kişileri soyadlarına göre alfabetik olarak sırala
     const alpha = people.sort((lastOne, nextOne) => {
         const [aLast, aFirst] = lastOne.split(', ');
         const [bLast, bFirst] = nextOne.split(', ');
@@ -61,13 +61,14 @@ const inventors = [
     });
     console.log(alpha);
 
+    // 7 - Aşağıdakilerden her birinin sayısını topla
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
-
-    const transportation = data.reduce(function(obj, item) {
+    const transportation = data.reduce(function (obj, item) {
         if (!obj[item]) {
             obj[item] = 0;
         }
 
         obj[item]++;
         return obj;
-    }, {});    
+    }, {});
+    console.log(transportation);
