@@ -21,9 +21,9 @@ The main goal of this challenge is to strengthen my understanding of **Vanilla J
 | Day | Project Name | Status |
 |-----|-------------|--------|
 | 01  | Drum Kit | ✅ |
-| 02  | CSS + JS Clock | ⏳ |
-| 03  | Playing With CSS Variables and JS| ⏳ |
-| 04  | Array Cardio Day 1 | ⏳ |
+| 02  | CSS + JS Clock | ✅ |
+| 03  | Playing With CSS Variables and JS| ✅ |
+| 04  | Array Cardio Day 1 | ✅ |
 | 05  | Flex Panels Image Gallery | ⏳ |
 | 06  | Ajax Type Ahead| ⏳ |
 | 07  | Array Cardio Day 2 | ⏳ |
